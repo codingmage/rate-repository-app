@@ -41,7 +41,7 @@ const RepositoryItem = (props) => {
                 <NumberText num={props.stargazersCount} grayText={"Stars"} />
                 <NumberText num={props.forksCount} grayText={"Forks"} />
                 <NumberText num={props.reviewCount} grayText={"Reviews"} />
-                <NumberText num={props.ratingAverage} grayText={"Ratings"} />
+                <NumberText num={props.ratingAverage} grayText={"Rating"} />
             </View>
 
         </View>
