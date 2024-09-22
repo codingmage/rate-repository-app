@@ -3,22 +3,32 @@ import Constants from "expo-constants";
 import Subheading from "./Subheading";
 
 import theme from "../theme";
+import { Link } from "react-router-native";
 
 const styles = StyleSheet.create({
   container: {
     paddingTop: (Constants.statusBarHeight + 10),
     padding: 16,
-    backgroundColor: theme.colors.backgroundSecondary
+    backgroundColor: theme.colors.backgroundSecondary,
     // ...
   },
+  tabs: {
+    flexDirection: "row", 
+    gap: 10
+  }
   // ...
 });
 
 const AppBar = () => {
   return (
     <View style={styles.container}>
-        <Pressable onPress={() => Alert.alert("No other tabs yet!")}>
-            <Subheading>Repositories</Subheading>
+        <Pressable style={styles.tabs} onPress={() => Alert.alert("No other tabs yet!")}>
+            <Link to="/">
+              <Subheading>Repositories</Subheading>
+            </Link>
+            <Link to="sign-in">
+              <Subheading>Sign In</Subheading>
+            </Link>
         </Pressable>
     </View>
     )
