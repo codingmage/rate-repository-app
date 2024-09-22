@@ -1,4 +1,4 @@
-import { View, StyleSheet, Pressable, Alert } from "react-native";
+import { View, StyleSheet, Pressable, Alert, ScrollView } from "react-native";
 import Constants from "expo-constants";
 import Subheading from "./Subheading";
 
@@ -22,14 +22,18 @@ const styles = StyleSheet.create({
 const AppBar = () => {
   return (
     <View style={styles.container}>
-        <Pressable style={styles.tabs} onPress={() => Alert.alert("No other tabs yet!")}>
+      <ScrollView contentContainerStyle={styles.tabs} horizontal>
+        <Pressable onPress={() => Alert.alert("No other tabs yet!")}>
             <Link to="/">
               <Subheading>Repositories</Subheading>
             </Link>
+        </Pressable>
+        <Pressable onPress={() => Alert.alert("No other tabs yet!")}>
             <Link to="sign-in">
               <Subheading>Sign In</Subheading>
             </Link>
-        </Pressable>
+         </Pressable>
+      </ScrollView>
     </View>
     )
 };
