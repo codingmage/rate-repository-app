@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   },
   tabs: {
     flexDirection: "row", 
-    gap: 10
+    gap: 20
   }
   // ...
 });
