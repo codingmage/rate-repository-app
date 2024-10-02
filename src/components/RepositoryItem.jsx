@@ -2,12 +2,13 @@ import { Image, StyleSheet, View, /* Text */ } from "react-native"
 import Text from "./Text"
 import NumberText from "./NumberText";
 import Tag from "./Tag";
+import {useWindowDimensions} from "react-native";
 
 const styles = StyleSheet.create({
     card: {
         padding: 10,
         backgroundColor: "white",
-        gap: 10
+        gap: 10,
     },
     avatar: {
       width: 50,
@@ -17,7 +18,7 @@ const styles = StyleSheet.create({
     main: {
         flexDirection: "row",
         justifyContent: "flex-start",
-        gap: 10
+        gap: 10,
     },
     numbers: {
         flexDirection: "row",
@@ -27,13 +28,16 @@ const styles = StyleSheet.create({
   
 
 const RepositoryItem = (props) => {
+
+    const {width} = useWindowDimensions();
+
     return (
         <View style={styles.card}>
             <View style={styles.main}>
                 <Image style={styles.avatar} source={{ uri: props.ownerAvatarUrl,}}/>
-                <View style={{flexGrow: 0, gap: 10}}>
+                <View style={{flexGrow: 1, gap: 10}}>
                     <Text fontWeight="bold">{props.fullName}</Text>
-                    <Text color="textSecondary">{props.description}</Text>
+                    <Text color="textSecondary" style={{flexWrap: "wrap", width: (width - 70)}}>{props.description}</Text>
                     <Tag>{props.language}</Tag>
                 </View>
             </View>
