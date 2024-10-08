@@ -51,7 +51,8 @@ const SignIn = () => {
 
     try {
       const {data} = await signIn({username, password})
-      console.log(data)
+      const token = data.authenticate.accessToken
+      console.log(token)
     } catch (error) {
       console.log(error)
     }
