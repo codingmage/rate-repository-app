@@ -1,7 +1,7 @@
 import { View } from "react-native";
 import Text from "./Text";
 
-import handleNumber from "../../utils/numbers";
+import handleNumber from "../utils/numbers";
 
 const NumberText = ({num, grayText}) => {
 
