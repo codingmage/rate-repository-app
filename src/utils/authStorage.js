@@ -17,9 +17,9 @@ class AuthStorage {
     AsyncStorage.setItem(`${this.namespace}:accessToken`, JSON.stringify(accessToken))
   }
 
-  async removeAccessToken() {
+  removeAccessToken() {
     // Remove the access token from the storage
-    await AsyncStorage.removeItem(`${this.namespace}:accessToken`)
+    AsyncStorage.removeItem(`${this.namespace}:accessToken`)
   }
 }
 
