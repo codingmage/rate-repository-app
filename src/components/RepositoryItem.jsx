@@ -32,7 +32,7 @@ const RepositoryItem = (props) => {
     const {width} = useWindowDimensions();
 
     return (
-        <View style={styles.card}>
+        <View testID="repositoryItem" style={styles.card}>
             <View style={styles.main}>
                 <Image style={styles.avatar} source={{ uri: props.ownerAvatarUrl,}}/>
                 <View style={{flexGrow: 1, gap: 10}}>
