@@ -43,25 +43,7 @@ const initialValues = {
   password: ""
 }
 
-const SignIn = () => {
-
-  const navigate = useNavigate()
-
-  const [signIn] = useSignIn();
-
-  const onSubmit = async (values) => {
-    const {username, password} = values
-
-    try {
-      const {data} = await signIn({username, password})
-      const token = data.authenticate.accessToken
-      console.log(token)
-      navigate("/")
-    } catch (error) {
-      console.log(error)
-    }
-  };
-
+export const SignInContainer = ({onSubmit}) => {
   const formik = useFormik({
     initialValues,
     validationSchema,
@@ -94,6 +76,61 @@ const SignIn = () => {
       </Pressable>
     </View>
   );
+}
+
+const SignIn = () => {
+
+  const navigate = useNavigate()
+
+  const [signIn] = useSignIn();
+
+  const onSubmit = async (values) => {
+    const {username, password} = values
+
+    try {
+      const {data} = await signIn({username, password})
+      const token = data.authenticate.accessToken
+      console.log(token)
+      navigate("/")
+    } catch (error) {
+      console.log(error)
+    }
+  };
+
+  return <SignInContainer onSubmit={onSubmit}/>
+
+/*   const formik = useFormik({
+    initialValues,
+    validationSchema,
+    onSubmit
+  })
+
+  return (
+    <View style={styles.container}>
+      <TextInput 
+        style={[styles.inputbox, formik.touched.username && formik.errors.username ? styles.errorBox : ""]} 
+        placeholderTextColor={theme.colors.textSecondary} 
+        placeholder="Username" value={formik.values.username} 
+        onChangeText={formik.handleChange("username")}
+      />
+      {formik.touched.username && formik.errors.username && (
+        <Text style={styles.error}>{formik.errors.username}</Text>
+      )}
+      <TextInput 
+        style={styles.inputbox} 
+        placeholderTextColor={theme.colors.textSecondary} 
+        placeholder="Password" value={formik.values.password} 
+        onChangeText={formik.handleChange("password")} 
+        secureTextEntry
+      />
+      {formik.touched.password && formik.errors.password && (
+        <Text style={styles.error}>{formik.errors.password}</Text>
+      )}
+      <Pressable style={styles.button}onPress={formik.handleSubmit}>
+        <Text style={{color: "white"}}>Sign In</Text>
+      </Pressable>
+    </View>
+  ); */
 };
 
 export default SignIn;
