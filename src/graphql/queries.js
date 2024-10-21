@@ -29,4 +29,21 @@ export const GET_ME = gql`
   }
 `;
 
+export const GET_REPOSITORY = gql`
+  query Repository($id: ID!) {
+    repository(id: $id) {
+      description
+      forksCount
+      fullName
+      id
+      language
+      ownerAvatarUrl
+      ratingAverage
+      reviewCount
+      stargazersCount
+      url
+    }
+  }
+`
+
 // other queries...

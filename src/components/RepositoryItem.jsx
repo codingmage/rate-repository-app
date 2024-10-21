@@ -1,8 +1,13 @@
-import { Image, StyleSheet, View, /* Text */ } from "react-native"
+import { Image, Pressable, StyleSheet, View, /* Text */ } from "react-native"
 import Text from "./Text"
 import NumberText from "./NumberText";
 import Tag from "./Tag";
 import {useWindowDimensions} from "react-native";
+import { useQuery } from "@apollo/client";
+import { GET_REPOSITORY } from "../graphql/queries";
+import { useParams } from "react-router-native";
+import theme from "../theme";
+import * as Linking from "expo-linking";
 
 const styles = StyleSheet.create({
     card: {
@@ -31,6 +36,20 @@ const RepositoryItem = (props) => {
 
     const {width} = useWindowDimensions();
 
+     if(props.fullView === true) {
+        const { id } = useParams()
+        const { data, error, loading } = useQuery(GET_REPOSITORY, {
+            fetchPolicy: "cache-and-network",
+            variables: { id }
+          });
+
+        if(loading) {
+            return <Text>Loading...</Text>
+        } else {
+            props = data.repository
+        }
+    }
+
     return (
         <View testID="repositoryItem" style={styles.card}>
             <View style={styles.main}>
@@ -47,7 +66,17 @@ const RepositoryItem = (props) => {
                 <NumberText num={props.reviewCount} grayText={"Reviews"} />
                 <NumberText num={props.ratingAverage} grayText={"Rating"} />
             </View>
-
+            {
+                props.url && (
+                    <View>
+                        <Pressable onPress={() => Linking.openURL(props.url)} style={{padding: 12, borderRadius: 5, backgroundColor: theme.colors.primary}}>
+                            <Text style={{color: "white", alignSelf: "center"}} >
+                                Open in Github
+                            </Text>
+                        </Pressable>
+                    </View>
+                )
+            }
         </View>
     )
 }
