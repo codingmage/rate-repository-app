@@ -28,8 +28,10 @@
     "@expo/metro-runtime": "~3.1.1",
     "@expo/ngrok": "^4.1.0",
     "@react-native-async-storage/async-storage": "1.23.1",
+    "date-fns": "^4.1.0",
     "dotenv": "^16.4.5",
     "expo": "^51.0.36",
+    "expo-linking": "~6.3.1",
     "expo-status-bar": "~1.11.1",
     "formik": "^2.4.6",
     "graphql": "^15.9.0",
@@ -38,8 +40,7 @@
     "react-native": "^0.73.9",
     "react-native-web": "~0.19.6",
     "react-router-native": "^6.26.2",
-    "yup": "^1.4.0",
-    "expo-linking": "~6.3.1"
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

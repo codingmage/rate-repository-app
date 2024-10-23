@@ -3,9 +3,6 @@ import Text from "./Text"
 import NumberText from "./NumberText";
 import Tag from "./Tag";
 import {useWindowDimensions} from "react-native";
-import { useQuery } from "@apollo/client";
-import { GET_REPOSITORY } from "../graphql/queries";
-import { useParams } from "react-router-native";
 import theme from "../theme";
 import * as Linking from "expo-linking";
 
@@ -14,6 +11,7 @@ const styles = StyleSheet.create({
         padding: 10,
         backgroundColor: "white",
         gap: 10,
+        marginBottom: 10
     },
     avatar: {
       width: 50,
@@ -35,20 +33,6 @@ const styles = StyleSheet.create({
 const RepositoryItem = (props) => {
 
     const {width} = useWindowDimensions();
-
-     if(props.fullView === true) {
-        const { id } = useParams()
-        const { data, error, loading } = useQuery(GET_REPOSITORY, {
-            fetchPolicy: "cache-and-network",
-            variables: { id }
-          });
-
-        if(loading) {
-            return <Text>Loading...</Text>
-        } else {
-            props = data.repository
-        }
-    }
 
     return (
         <View testID="repositoryItem" style={styles.card}>
