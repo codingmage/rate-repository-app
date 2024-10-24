@@ -9,6 +9,14 @@ export const USER_SIGNIN = gql`
 
 `
 
+export const NEW_REVIEW = gql`
+    mutation CreateReview($review: CreateReviewInput) {
+        createReview(review: $review) {
+           repositoryId
+        }
+    }
+`
+
 /* export const USER_SIGNIN = gql`
     mutation {
         authenticate(credentials: { username: $username, password: $password }) {

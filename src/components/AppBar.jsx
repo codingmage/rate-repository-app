@@ -55,9 +55,14 @@ const AppBar = () => {
         {
           loading ? null : (
             data.me ? (
-              <Pressable onPress={signUserOut} /* onPress={() => Alert.alert("No other tabs yet!")} */>
+              <View style={styles.tabs}>
+                <Link to="add-review">
+                  <Subheading>Create a Review</Subheading>
+                </Link>
+                <Pressable onPress={signUserOut} /* onPress={() => Alert.alert("No other tabs yet!")} */>
                   <Subheading>Sign Out</Subheading>
-              </Pressable>) : (
+                </Pressable>
+              </View>) : (
               <Pressable /* onPress={() => Alert.alert("No other tabs yet!")} */>
               <Link to="sign-in">
                 <Subheading>Sign In</Subheading>
